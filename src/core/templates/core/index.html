@@ -3,21 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django project</title>
+    <title>Home</title>
 </head>
 <body>
-    <h1> Django </h1>
-    <ul>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
-        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
-        <li>
-            <a href="./roll_dice">Roll dice</a>
-        </li>
-        <li>
-            <a href="./usuario.html">Userdata</a>
-        </li>
-    </ul>
+    <header>
+        <ul>
+            <li><a href="">INICIO</a></li>
+            <li><a href="">PRODUCTOS</a></li>
+            <li><a href="">SUCURSALES</a></li>
+            <li><a href="">ACERCA DE</a></li>
+            <li><a href="">CONTACTO</a></li>
+            <li>
+                <a href="usuario/">USER</a>
+            </li>
+        </ul>
+    </header>
+    <main>
+        <h1> Django </h1>
+        <ul>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
+            <li>
+                <a href="./roll_dice">Roll dice</a>
+            </li>
+        </ul>
+        {% for client in clients %}
+            <p>{{ client.name }} - {{ client.last_name }}</p>
+        {% endfor %}
+    </main>
 
 <footer>Made in {{ year }}</footer>
 </body>

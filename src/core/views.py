@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
+from .models import Client
 
 #TEST FUNCTIONS
 # def greet(request):
@@ -59,3 +59,7 @@ def calcular_edad(request):
     }
 
     return render(request, 'core/usuario.html', context=data)
+
+def see_clients(request):
+    clients = Client.objects.all()
+    return render(request, "core/index.html", {'clients':clients})
