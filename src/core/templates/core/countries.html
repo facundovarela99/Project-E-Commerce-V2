@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Django</h1>
+    <a href="/">VOLVER</a>
+        {% for country in countries %}
+            <p>{{ country.name }}</p>
+        {% endfor %}
+    <footer>Made in {{ year }}</footer>
+</body>
+</html>

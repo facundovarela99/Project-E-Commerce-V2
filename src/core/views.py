@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Client
+from .models import Client, Country
+from datetime import datetime, date, timedelta
 
 #TEST FUNCTIONS
 # def greet(request):
@@ -19,7 +20,6 @@ def index(request):
     return render(request, "core/index.html", context)
 
 def roll_dice(request):
-    from datetime import datetime
     from random import randint
 
     dice_roll = randint(1, 6)
@@ -38,7 +38,6 @@ def roll_dice(request):
 
 
 def calcular_edad(request):
-    from datetime import datetime, date, timedelta
     nombre = "Facundo"
     apellido = "Varela"
     fecha_actual = datetime.now()
@@ -60,6 +59,14 @@ def calcular_edad(request):
 
     return render(request, 'core/usuario.html', context=data)
 
+def see_countries(request):
+    countries = Country.objects.all()
+    year = 2025
+    context = {'countries':countries, 'year':year}
+    return render(request, "core/countries.html", context)
+
 def see_clients(request):
     clients = Client.objects.all()
-    return render(request, "core/index.html", {'clients':clients})
+    year = 2025
+    context = {'clients':clients, 'year':year}
+    return render(request, "core/clients.html", context)
