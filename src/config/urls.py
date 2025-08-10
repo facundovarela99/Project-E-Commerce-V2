@@ -21,11 +21,5 @@ from core import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index),
-    path('roll_dice/', views.roll_dice),
-    path('usuario/', views.calcular_edad),
-    path('clients/', views.see_clients),
-    path('countries/', views.see_countries),
-    # path("greet/", views.greet), TEST PATH
-    # path("greet_with_label/",views.greet_with_label), TEST PATH
-    # path("greet_with_parameters/<str:name>/<str:last_name>", views.greet_with_parameters), TEST PATH
+
 ]
