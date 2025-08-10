@@ -7,28 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
     <script defer src="{% static 'core/js/script.js' %}"></script>
-    <title>Register</title>
+    <title>ABOUT</title>
 </head>
 
-<body class="">
+<body>
     <header>
         <ul>
             <li><a href="{% url 'core:index' %}">HOME</a></li>
             <li><a href="">PRODUCTS</a></li>
             <li><a href="">BRANCHES</a></li>
-            <li><a href="{% url 'core:about' %}">ABOUT</a></li>
+            <li><a href="core:about">ABOUT</a></li>
             <li><a href="">CONTACT</a></li>
             <li><a href="{% url 'core:register' %}">REGISTER</a></li>
         </ul>
     </header>
-    <h1>REGISTER</h1>
-    <form class="formRegister" action="">
-        <label for="name"></label>
-        <input type="text" name="name">
-        <label for="Last name"></label>
-        <input type="text" name="Last name">
-        <button class="sendButton" type="submit">SEND</button>
-    </form>
+    <main>
+        <h1>ABOUT</h1>
+        <img src="{% static 'core/img/foto-version-comic.png' %}" alt="" style="width: 180px;">
+    </main>
     <footer>Made in {{ year }}</footer>
 </body>
 

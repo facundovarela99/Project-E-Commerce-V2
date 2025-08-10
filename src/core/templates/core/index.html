@@ -1,30 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../migrations/styles/style.css">
+    <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+    <script defer src="{% static 'core/js/script.js' %}"></script>
     <title>Home</title>
 </head>
+
 <body>
     <header>
         <ul>
-            <li><a href="">INICIO</a></li>
-            <li><a href="">PRODUCTOS</a></li>
-            <li><a href="">SUCURSALES</a></li>
-            <li><a href="">ACERCA DE</a></li>
-            <li><a href="">CONTACTO</a></li>
+            <li><a href="">HOME</a></li>
+            <li><a href="">PRODUCTS</a></li>
+            <li><a href="">BRANCHES</a></li>
+            <li><a href="{% url 'core:about' %}">ABOUT</a></li>
+            <li><a href="">CONTACT</a></li>
+            <li><a href="{% url 'core:register' %}">REGISTER</a></li>
         </ul>
     </header>
     <main>
         <h1> Django </h1>
         <ul>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.</li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea
+                velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.
+            </li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea
+                velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.
+            </li>
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora adipisci porro debitis voluptatum ea
+                velit facilis accusamus vel nulla? Et veniam earum sapiente consectetur quia ullam. Saepe omnis eius ut.
+            </li>
         </ul>
     </main>
 
-<footer>Made in {{ year }}</footer>
+    <footer>Made in {{ year }}</footer>
 </body>
+
 </html>
