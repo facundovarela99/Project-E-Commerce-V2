@@ -5,7 +5,7 @@ from . import views
 app_name = 'core' #nombre para llamar en las URLS de config
 
 urlpatterns = [
-    path('index', views.index, name='index'),
-    path('register', views.register, name='register'),
+    path('', views.index, name='index'),
     path('about', views.about, name='about'),
+    path('register', views.register, name='register'),
 ]

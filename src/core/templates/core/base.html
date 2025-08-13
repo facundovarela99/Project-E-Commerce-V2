@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Titulo archivo BASE{% endblock title %}</title>
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li><a href="{% url 'core:index' %}">HOME</a></li>
+            <li><a href="">PRODUCTS</a></li>
+            <li><a href="">BRANCHES</a></li>
+            <li><a href="{% url 'core:about' %}">ABOUT</a></li>
+            <li><a href="">CONTACT</a></li>
+            <li><a href="{% url 'core:register' %}">REGISTER</a></li>
+        </ul>
+    </header>
+
+    <main>
+        {% block content %}
+        <!-- Aquí se inyecta el contenido de los otros templates -->
+        {% endblock content %}
+    </main>
+    <footer>Made in {{ year }}</footer>
+</body>
+
+</html>

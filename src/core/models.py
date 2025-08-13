@@ -25,3 +25,4 @@ class User(models.Model):
     country_of_origin = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
     def __str__(self):
         return f'{self.name}, {self.last_name}'
+
