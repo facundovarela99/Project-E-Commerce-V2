@@ -63,3 +63,16 @@ botonEliminar.addEventListener("click", () => {
     contadorCarrito.innerHTML = 0;
     valor = 0;
 })
+
+
+// Pendiente implementar lógica para deletear
+// const deleteUserButton = document.querySelectorAll('.deleteUser');
+// deleteUserButton.forEach( button=>{
+//     let button = confirm('Desea confirmar?');
+//     (button)
+//     ? alert('Se elimina el usuario')
+//     : alert('No se elimina el usuario')
+// });
+
+
+

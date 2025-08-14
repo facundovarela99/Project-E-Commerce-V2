@@ -53,3 +53,12 @@ def update_user(request: HttpRequest, pk: int) -> HttpResponse:
 def user_detail(request: HttpRequest, pk: int) -> HttpResponse:
     query = User.objects.get(id=pk)
     return render(request, 'core/user_detail.html', {'object': query})
+
+
+# ***** USERS - DELETE VIEW
+def user_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = User.objects.get(id=pk)
+    if request.method == 'POST':
+        query.delete()
+        return redirect('core:users_list')
+    return render(request, 'core/user_delete_confirm.html', {'object': query})
