@@ -18,11 +18,12 @@ class Client(models.Model):
 class User(models.Model):
     name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    user_name = models.CharField(max_length=100)
+    user_name = models.CharField(max_length=100, unique=True)
     password = models.CharField(max_length=30)
     birth_date = models.DateField()
-    email = models.CharField(max_length=100)
+    email = models.CharField(max_length=100, unique=True)
     country_of_origin = models.ForeignKey(Country, null=True, on_delete=models.SET_NULL)
     def __str__(self):
-        return f'{self.name}, {self.last_name}'
+        return f'{self.name} - {self.last_name} - {self.user_name}'
+
 

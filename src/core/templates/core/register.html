@@ -5,7 +5,9 @@
 
 {% block content %}
     <h1>Register - User Form</h1>
-    <form>
-        {{ form }}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">SEND</button>
     </form>
 {% endblock content %}
