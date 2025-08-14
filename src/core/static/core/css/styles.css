@@ -1,0 +1,11 @@
+header{
+    ul{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+main{
+    background-color: chartreuse;
+}
