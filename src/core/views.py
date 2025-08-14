@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from .models import Client, Country, User
 from datetime import datetime, date, timedelta
 from core import forms, models #se importa forms y se utiliza en register
-
+from .forms import UserForm
+from .models import User
 
 def index(request):
     context = {"year":2025} #test variable
@@ -13,15 +14,20 @@ def about(request):
     context = {"year":2025} #test variable
     return render(request, "core/about.html", context)
 
-def users_list(request): #metodo para devolver una lista de usuarios creados
-    users = models.User.objects.all()
-    return render(request, 'core/users_list.html', {'users':users})
+# ***** USERS - LIST VIEW
+def users_list(request: HttpRequest) -> HttpResponse: #metodo para devolver una lista de usuarios creados
+    queryset = User.objects.all()
+    context = {"year":2025,
+               'object_list':queryset
+               }
+    return render(request, 'core/users_list.html', context)
 
-def register(request):
+# ***** USERS - CREATE VIEW
+def register(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
-        form = forms.UserForm()
+        form = UserForm()
     if request.method == 'POST':
-        form = forms.UserForm(request.POST)
+        form = UserForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('core:register')
@@ -30,3 +36,20 @@ def register(request):
 def products(request):
     context = {'year':2025}
     return render(request, "core/products.html", context)
+
+# ***** USERS - UPDATE VIEW
+def update_user(request: HttpRequest, pk: int) -> HttpResponse:
+    query = User.objects.get(id=pk)
+    if request.method == 'GET':
+        form = UserForm(instance=query)
+    if request.method == 'POST':
+        form = UserForm(request.POST, instance=query)
+        if form.is_valid():
+            form.save()
+            return redirect('core:register')
+    return render(request, 'core/register.html', {'form':form})
+
+# ***** USERS - DETAIL VIEW
+def user_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = User.objects.get(id=pk)
+    return render(request, 'core/user_detail.html', {'object': query})

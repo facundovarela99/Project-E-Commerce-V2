@@ -1,10 +1,11 @@
 {% extends 'core/base.html' %}
-{% block title %}
-    Register form
-{% endblock title %}
 
 {% block content %}
-    <h1>Register - User Form</h1>
+    {% if form.instance.pk%} 
+        <h1>Register - Edit Form</h1>
+    {% else %}
+        <h1>Register - User Form</h1>
+    {% endif %}
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <h1>USER DETAIL</h1>
+    <ul>
+        <li><strong>Name:</strong> {{ object.name }}</li>
+        <li><strong>Last name:</strong> {{ object.last_name }}</li>
+        <li><strong>Username:</strong> {{ object.user_name }}</li>
+        <li><strong>Birthdate:</strong> {{ object.birth_date }}</li>
+        <li><strong>E-mail:</strong> {{ object.email }}</li>
+        <li><strong>Country of origin:</strong> {{ object.country_of_origin }}</li>
+    </ul>
+{% endblock content %}
