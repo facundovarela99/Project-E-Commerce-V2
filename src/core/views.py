@@ -26,3 +26,7 @@ def register(request):
             form.save()
             return redirect('core:register')
     return render(request, 'core/register.html', {'form':form})
+
+def products(request):
+    context = {'year':2025}
+    return render(request, "core/products.html", context)

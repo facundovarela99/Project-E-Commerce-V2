@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% load static %}
     <link rel="stylesheet" href="{% static 'core/css/styles.css' %}">
+    <script defer src="{% static 'core/js/script.js' %}"></script>
     <title>{% block title %}Titulo archivo BASE{% endblock title %}</title>
 </head>
 
@@ -12,7 +13,7 @@
     <header>
         <ul>
             <li><a href="{% url 'core:index' %}">HOME</a></li>
-            <li><a href="">PRODUCTS</a></li>
+            <li><a href="{% url 'core:products' %}">PRODUCTS</a></li>
             <li><a href="">BRANCHES</a></li>
             <li><a href="{% url 'core:about' %}">ABOUT</a></li>
             <li><a href="">CONTACT</a></li>
