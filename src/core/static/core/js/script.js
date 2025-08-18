@@ -8,8 +8,6 @@ const botonEliminar = document.querySelector(".botonEliminar");
 const valorProducto1 = document.querySelector(".valorProducto1").textContent;
 const valorProducto2 = document.querySelector(".valorProducto2").textContent;
 const valorProducto3 = document.querySelector(".valorProducto3").textContent;
-let valor = 0;
-let valorAlmacenado;
 const contadorCarrito = document.querySelector(".contadorCarrito");
 
 
@@ -21,36 +19,21 @@ if (localStorage.getItem('acumuladorCarrito') === null) {
 
 
 botonProducto1.addEventListener("click", () => {
-    if (localStorage.getItem('acumuladorCarrito') === null || localStorage.getItem('acumuladorCarrito') == 0) {
-        valor += Number(valorProducto1);
-        contadorCarrito.innerHTML = valor;
-    } else {
-        valorAlmacenado = Number(contadorCarrito.textContent);
+        let valorAlmacenado = Number(contadorCarrito.textContent);
         valorAlmacenado += Number(valorProducto1);
         contadorCarrito.innerHTML = valorAlmacenado;
-    }
 });
 
 botonProducto2.addEventListener("click", () => {
-    if (localStorage.getItem('acumuladorCarrito') === null || localStorage.getItem('acumuladorCarrito') == 0){
-        valor += Number(valorProducto2);
-        contadorCarrito.innerHTML = valor;
-    } else {
-        valorAlmacenado = Number(contadorCarrito.textContent);
+        let valorAlmacenado = Number(contadorCarrito.textContent);
         valorAlmacenado += Number(valorProducto2);
         contadorCarrito.innerHTML = valorAlmacenado;
-    }
 });
 
 botonProducto3.addEventListener("click", () => {
-    if (localStorage.getItem('acumuladorCarrito') === null || localStorage.getItem('acumuladorCarrito') == 0){
-        valor += Number(valorProducto3);
-        contadorCarrito.innerHTML = valor;
-    } else {
-        valorAlmacenado = Number(contadorCarrito.textContent);
+        let valorAlmacenado = Number(contadorCarrito.textContent);
         valorAlmacenado += Number(valorProducto3);
         contadorCarrito.innerHTML = valorAlmacenado;
-    }
 })
 
 
