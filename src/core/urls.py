@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from core.views_models import users
+from core.views_models import users, product
 from . import views
 
 app_name = 'core' #nombre para llamar en las URLS de config
@@ -18,4 +18,13 @@ urlpatterns += [
     path('update_user/<int:pk>', users.update_user, name='update_user'),
     path('user_detail/<int:pk>', users.user_detail, name='user_detail'),
     path('user_delete/<int:pk>', users.user_delete, name='user_delete'),
+]
+
+
+urlpatterns += [
+    path('product_list', product.ProductListView.as_view(), name='product_list'),
+    #path('products_list', product.users_list, name='product_list'),
+    #path('update_product/<int:pk>', product.update_user, name='update_product'),
+    #path('product_detail/<int:pk>', product.user_detail, name='product_detail'),
+    #path('product_delete/<int:pk>', product.user_delete, name='product_delete'),
 ]

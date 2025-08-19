@@ -1,19 +1,20 @@
+from ..models import Product
+from ..forms import ProductForm
+
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
-from ..forms import UserForm
-from ..models import Product
 
-class UserListView(ListView):
+class ProductListView(ListView):
     model = Product
 
-class UserCreateView(CreateView):
+class ProductCreateView(CreateView):
     model = Product
 
-class UserDeleteView(DeleteView):
+class ProductDeleteView(DeleteView):
     model = Product
 
-class UserDetail(DetailView):
+class ProductDetail(DetailView):
     model = Product
 
-class UserUpdate(UpdateView):
+class ProductUpdate(UpdateView):
     model = Product

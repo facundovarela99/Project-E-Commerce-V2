@@ -19,10 +19,11 @@ class UserForm(forms.ModelForm):
         name: str = self.cleaned_data.get('name', '')
         return validate_name(name)
 
+#Created product model as a starting point to implement Class-based views
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields =  ['name', 'description']
+        fields =  ['name', 'description', 'stock']
 
     def clean_name(self):
         name: str = self.cleaned_data.get('name', '')
