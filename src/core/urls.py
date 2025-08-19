@@ -8,6 +8,8 @@ app_name = 'core' #nombre para llamar en las URLS de config
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
+    path('products', views.products, name='products'),
+
 ]
 
 urlpatterns += [
@@ -16,5 +18,4 @@ urlpatterns += [
     path('update_user/<int:pk>', users.update_user, name='update_user'),
     path('user_detail/<int:pk>', users.user_detail, name='user_detail'),
     path('user_delete/<int:pk>', users.user_delete, name='user_delete'),
-    path('products', users.products, name='products'),
 ]

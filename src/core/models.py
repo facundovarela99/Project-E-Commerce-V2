@@ -6,6 +6,10 @@ class Country(models.Model):
     name = models.CharField(max_length=100, unique=True)
     def __str__(self):
         return self.name
+    
+#Pendiente class States
+
+#Pendiente class Cities
 
 class Client(models.Model):
     name = models.CharField(max_length=100)
@@ -27,3 +31,8 @@ class User(models.Model):
         return f'{self.name} - {self.last_name} - {self.user_name}'
 
 
+class Product(models.Model):
+    name = models.CharField(max_length=50)
+    description = models.TextField(max_length=300)
+    def __str__(self):
+        return f'{self.name} - {self.description}'

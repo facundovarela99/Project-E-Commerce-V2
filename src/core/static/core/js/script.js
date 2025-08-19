@@ -56,6 +56,3 @@ botonEliminar.addEventListener("click", () => {
 //     ? alert('Se elimina el usuario')
 //     : alert('No se elimina el usuario')
 // });
-
-
-

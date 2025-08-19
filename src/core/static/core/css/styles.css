@@ -13,6 +13,8 @@ header{
     flex-direction: row;
     justify-content: space-around;
     background-color: rgb(121, 121, 121);
+    flex-wrap: wrap;
+    row-gap: 40px;
 }
 
 
@@ -54,4 +56,6 @@ header{
     width: 50%;
 }
 
-
+.tablaPrueba,thead,th,tbody,tr,td{
+    border: 1px solid;
+}

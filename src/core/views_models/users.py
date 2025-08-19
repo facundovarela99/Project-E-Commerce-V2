@@ -1,12 +1,7 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from ..models import Client, Country, User
-from core import forms, models #se importa forms y se utiliza en register
-from ..forms import UserForm
-from ..models import User
-
-
-
+from ..forms import UserForm #se importa forms y se utiliza en register
 
 # ***** USERS - LIST VIEW
 def users_list(request: HttpRequest) -> HttpResponse: #metodo para devolver una lista de usuarios creados
@@ -26,10 +21,6 @@ def register(request: HttpRequest) -> HttpResponse:
             form.save()
             return redirect('core:register')
     return render(request, 'core/register.html', {'form':form})
-
-def products(request):
-    context = {'year':2025}
-    return render(request, "core/products.html", context)
 
 # ***** USERS - UPDATE VIEW
 def update_user(request: HttpRequest, pk: int) -> HttpResponse:

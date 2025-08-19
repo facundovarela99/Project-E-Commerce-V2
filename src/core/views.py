@@ -9,3 +9,6 @@ def about(request):
     context = {"year":2025} #test variable
     return render(request, "core/about.html", context)
 
+def products(request):
+    context = {'year':2025}
+    return render(request, "core/products.html", context)
