@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from ..models import Client, Country, User
 from ..forms import UserForm #se importa forms y se utiliza en register
 
+#-----------Function-based Views-----------
 # ***** USERS - LIST VIEW
 def users_list(request: HttpRequest) -> HttpResponse: #metodo para devolver una lista de usuarios creados
     queryset = User.objects.all()

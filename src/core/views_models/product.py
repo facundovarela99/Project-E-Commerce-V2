@@ -5,7 +5,7 @@ from ..forms import ProductForm
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DeleteView, DetailView, ListView, UpdateView
 
-
+#-----------Class-based Views-----------
 class ProductListView(ListView):
     model = Product
 
@@ -14,11 +14,15 @@ class ProductCreateView(CreateView):
     form_class = ProductForm
     success_url = reverse_lazy('core:product_list')
 
-# class ProductDeleteView(DeleteView):
-#     model = Product
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    success_url = reverse_lazy('core:product_list')
 
-# class ProductDetail(DetailView):
-#     model = Product
+class ProductDetail(DetailView):
+    model = Product
 
-# class ProductUpdate(UpdateView):
-#     model = Product
+class ProductDeleteView(DeleteView):
+    model = Product
+    success_url = reverse_lazy('core:product_list')
+

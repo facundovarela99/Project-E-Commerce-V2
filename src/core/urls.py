@@ -12,6 +12,7 @@ urlpatterns = [
 
 ]
 
+#USER URLS
 urlpatterns += [
     path('register', users.register, name='register'),
     path('users_list', users.users_list, name='users_list'),
@@ -20,11 +21,11 @@ urlpatterns += [
     path('user_delete/<int:pk>', users.user_delete, name='user_delete'),
 ]
 
-
+#TEST 'PRODUCT' CLASS-BASED VIEW URL
 urlpatterns += [
     path('product_list', product.ProductListView.as_view(), name='product_list'),
     path('product_create', product.ProductCreateView.as_view(), name='product_create'),
-    #path('update_product/<int:pk>', product.update_user, name='update_product'),
-    #path('product_detail/<int:pk>', product.user_detail, name='product_detail'),
-    #path('product_delete/<int:pk>', product.user_delete, name='product_delete'),
+    path('update_product/<int:pk>', product.ProductUpdateView.as_view(), name='update_product'),
+    path('product_detail/<int:pk>', product.ProductDetail.as_view(), name='product_detail'),
+    path('product_delete/<int:pk>', product.ProductDeleteView.as_view(), name='product_delete'),
 ]

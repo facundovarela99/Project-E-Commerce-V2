@@ -30,7 +30,7 @@ class User(models.Model):
     def __str__(self):
         return f'{self.name} - {self.last_name} - {self.user_name}'
 
-
+#Created product model as a starting point to implement Class-based views (Go to core/view_models/product.py)
 class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=300)

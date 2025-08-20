@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Product delete</h1>
+    <p>Are you sure you want to delete "{{ product }}" ?</p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <button type="submit" style="background-color: brown; color: aliceblue;">CONFIRM</button>
+    </form>
+{% endblock content %}

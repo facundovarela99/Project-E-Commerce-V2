@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <h1>PRODUCT DETAIL</h1>
+    <ul>
+        <li><strong>Name:</strong> {{ object.name }}</li>
+        <li><strong>Description:</strong>
+        {% if object.description %}
+            {{ object.description }}
+        {% else %}
+            -
+        {% endif %}
+        </li>
+        <li><strong>Stock:</strong> {{ object.stock }}</li>
+    </ul>
+    <a href="{% url 'core:product_list' %}"><button>Go back</button></a>
+{% endblock content %}
