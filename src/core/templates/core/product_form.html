@@ -1,0 +1,15 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    {% if form.instance.pk%} 
+        <h1>Product - Edit Form</h1>
+    {% else %}
+        <h1>Register - Create Form</h1>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">SEND</button>
+    </form>
+    <a href="{% url 'core:product_list' %}"></a>
+{% endblock content %}
