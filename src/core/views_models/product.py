@@ -9,6 +9,15 @@ from django.views.generic import CreateView, DeleteView, DetailView, ListView, U
 class ProductListView(ListView):
     model = Product
 
+    def get_queryset(self): #Busqueda filtrada en vista basada en clase
+        search = self.request.GET.get('busqueda')
+        if search:
+            queryset =  Product.objects.filter(name__icontains=search)
+        else:
+            queryset = super().get_queryset() #Se ejecuta método de la clase padre (que por defecto trae todos los objetos)
+            # queryset = Product.objects.all() (Puede ser una u otra opción)
+        return queryset
+    
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm

@@ -34,6 +34,6 @@ class User(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=300)
-    stock = models.IntegerField(max_length=10000 ,null=False)
+    stock = models.IntegerField(null=False)
     def __str__(self):
         return f'{self.name} - {self.description}'

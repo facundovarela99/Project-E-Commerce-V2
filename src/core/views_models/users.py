@@ -3,10 +3,14 @@ from django.shortcuts import render, redirect
 from ..models import Client, Country, User
 from ..forms import UserForm #se importa forms y se utiliza en register
 
-#-----------Function-based Views-----------
+#-----------FUNCTION-BASED VIEWS-----------
 # ***** USERS - LIST VIEW
 def users_list(request: HttpRequest) -> HttpResponse: #metodo para devolver una lista de usuarios creados
-    queryset = User.objects.all()
+    search = request.GET.get('busqueda') #variable que obtiene un valor y filtra de la lista según lo tipeado
+    if search:
+        queryset = User.objects.filter(name__icontains=search)
+    else:
+        queryset = User.objects.all()
     context = {"year":2025,
                'object_list':queryset
                }
