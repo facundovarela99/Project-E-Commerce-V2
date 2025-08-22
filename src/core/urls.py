@@ -7,8 +7,9 @@ app_name = 'core' #nombre para llamar en las URLS de config
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('login', views.CustomLoginView.as_view(), name='login'),
     path('about', views.about, name='about'),
-    path('products', views.products, name='products'),
+    path('products/', views.products, name='products'),
 
 ]
 
