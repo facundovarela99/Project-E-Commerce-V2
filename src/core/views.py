@@ -1,11 +1,11 @@
 from django.shortcuts import render
 from datetime import datetime, date, timedelta
 from django.contrib.auth.views import LoginView
-from .forms import AuthenticationForm,CustomAuthenticationForm, CustomUserCreationForm
+from .forms import AuthenticationForm,CustomAuthenticationForm, CustomUserCreationForm, UserProfileForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponse
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User
 
 
@@ -40,3 +40,14 @@ class CustomRegisterView(CreateView):
     def form_valid(self, form: CustomUserCreationForm) -> HttpResponse:
         messages.success(self.request, f'Successful registration. You can log in now.')
         return super().form_valid(form)
+    
+
+class UpdateProfileView(UpdateView):
+    model = User
+    form_class = UserProfileForm
+    template_name = 'core/main_templates/profile.html'
+    success_url = reverse_lazy('core:index')
+
+    def get_object(self):
+        #Devuelve el usuario actual en lugar de esperar un pk
+        return self.request.user

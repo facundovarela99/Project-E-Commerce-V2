@@ -3,6 +3,7 @@ from django.urls import path
 from core.views_models import users, product
 from . import views
 from django.contrib.auth.views import LogoutView
+from .views import UpdateProfileView
 
 app_name = 'core' #nombre para llamar en las URLS de config
 
@@ -12,8 +13,8 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='core/main_templates/logout.html'), name='logout'),
     path('about', views.about, name='about'),
     path('products/', views.products, name='products'),
-    path('register_user/', views.CustomRegisterView.as_view(), name='register_user')
-
+    path('register_user/', views.CustomRegisterView.as_view(), name='register_user'),
+    path('profile/', views.UpdateProfileView.as_view(), name='profile'),
 ]
 
 #USER URLS

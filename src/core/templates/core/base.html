@@ -25,7 +25,7 @@
             </form>
             <li><a href="{% url 'core:logout' %}"></a></li>
             <li><a href="{% url 'core:users_list' %}"><button>USERS</button></a></li>
-            
+            <li><a href="{% url 'core:profile' %}"><button>PROFILE</button></a></li>
             {% else %}
             <li><a href="{% url 'core:login' %}"><button>LOG IN</button></a></li>
             <li><a href="{% url 'core:register_user' %}"><button>SIGN UP</button></a></li>
