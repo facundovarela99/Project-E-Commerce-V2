@@ -12,15 +12,26 @@
 <body>
     <header>
         <ul>
-            <li><a href="{% url 'core:index' %}">HOME</a></li>
-            <li><a href="{% url 'core:products' %}">PRODUCTS</a></li>
-            <li><a href="{% url 'core:product_list' %}">PRODUCTS LIST</a></li>
-            <li><a href="">BRANCHES</a></li>
-            <li><a href="{% url 'core:about' %}">ABOUT</a></li>
-            <li><a href="">CONTACT</a></li>
-            <li><a href="{% url 'core:login' %}">LOG IN</a></li>
-            <li><a href="{% url 'core:register' %}">REGISTER</a></li>
-            <li><a href="{% url 'core:users_list' %}">USERS</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'core:index' %}"><button>HOME</button></a></li>
+            <li><a href="{% url 'core:products' %}"><button>PRODUCTS</button></a></li>
+            <li><a href="{% url 'core:product_list' %}"><button>PRODUCTS LIST</button></a></li>
+            <li><a href=""><button>BRANCHES</button></a></li>
+            <li><a href="{% url 'core:about' %}"><button>ABOUT</button></a></li>
+            <li><a href=""><button>CONTACT</button></a></li>                
+            <form action="{% url 'core:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">LOG OUT</button>
+            </form>
+            <li><a href="{% url 'core:logout' %}"></a></li>
+            <li><a href="{% url 'core:users_list' %}"><button>USERS</button></a></li>
+            
+            {% else %}
+            <li><a href="{% url 'core:login' %}"><button>LOG IN</button></a></li>
+            <li><a href="{% url 'core:register_user' %}"><button>SIGN UP</button></a></li>
+            <li><a href="{% url 'core:about' %}"><button>ABOUT</button></a></li>
+            <!-- <li><a href="{% url 'core:register' %}"><button>REGISTER</button></a></li> -->
+            {% endif %}
         </ul>
     </header>
 

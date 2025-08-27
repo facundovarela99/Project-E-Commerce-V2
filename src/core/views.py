@@ -34,7 +34,7 @@ class CustomLoginView(LoginView):
     
 class CustomRegisterView(CreateView):
     form_class = CustomUserCreationForm
-    template_name = "core/register_user_admin.html"
+    template_name = "core/main_templates/register_user_admin.html"
     success_url = reverse_lazy("core:login")
 
     def form_valid(self, form: CustomUserCreationForm) -> HttpResponse:
