@@ -1,6 +1,8 @@
 from django import forms
 from .models import User, Product
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.models import User
+
 
 #Crear clase para el formulario
 #La clase crea los campos del modelo segun sus entidades
@@ -32,7 +34,18 @@ class ProductForm(forms.ModelForm):
     #     return validate_name(name)
 
 
+class CustomUserCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']
+        help_texts = {'username': ''}
+    def __init__(self, *args, **kwargs: any) -> None:
+        super().__init__(*args, **kwargs)
+        self.fields['password1'].help_text = ''
+        self.fields['password2'].help_text = ''
+
 class CustomAuthenticationForm(AuthenticationForm):
     class Meta:
         model = AuthenticationForm
         fields = ['username', 'password']
+

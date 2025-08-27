@@ -5,12 +5,15 @@
 {% endblock title %}
 
 {% block content %}
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
     <form method="post">
         {% csrf_token %}
         {{ form }}
         <button type="submit">LOG IN</button>
     </form>
     <p>
-        Don't you have an account? <a href="#">Register here</a>
+        Don't you have an account? <a href="{% url 'core:register_user' %}">Register here</a>
     </p>
 {% endblock content %}
