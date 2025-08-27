@@ -8,6 +8,7 @@ from django.views.generic import CreateView, DeleteView, DetailView, ListView, U
 #-----------Class-based Views-----------
 class ProductListView(ListView):
     model = Product
+    template_name = 'core/product_crud/product_list.html'
 
     def get_queryset(self): #Busqueda filtrada en vista basada en clase
         search = self.request.GET.get('busqueda')
@@ -21,17 +22,21 @@ class ProductListView(ListView):
 class ProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
+    template_name = 'core/product_crud/product_form.html'
     success_url = reverse_lazy('core:product_list')
 
 class ProductUpdateView(UpdateView):
     model = Product
     form_class = ProductForm
+    template_name = 'core/product_crud/product_form.html'
     success_url = reverse_lazy('core:product_list')
 
 class ProductDetail(DetailView):
     model = Product
+    template_name = 'core/product_crud/product_detail.html'
 
 class ProductDeleteView(DeleteView):
     model = Product
+    template_name = 'core/product_crud/product_list.html'
     success_url = reverse_lazy('core:product_list')
 

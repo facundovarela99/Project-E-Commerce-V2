@@ -14,7 +14,7 @@ def users_list(request: HttpRequest) -> HttpResponse: #metodo para devolver una 
     context = {"year":2025,
                'object_list':queryset
                }
-    return render(request, 'core/users_list.html', context)
+    return render(request, 'core/User_crud/users_list.html', context)
 
 # ***** USERS - CREATE VIEW
 def register(request: HttpRequest) -> HttpResponse:
@@ -25,7 +25,7 @@ def register(request: HttpRequest) -> HttpResponse:
         if form.is_valid():
             form.save()
             return redirect('core:register')
-    return render(request, 'core/register.html', {'form':form})
+    return render(request, 'core/User_crud/register.html', {'form':form})
 
 # ***** USERS - UPDATE VIEW
 def update_user(request: HttpRequest, pk: int) -> HttpResponse:
@@ -37,12 +37,12 @@ def update_user(request: HttpRequest, pk: int) -> HttpResponse:
         if form.is_valid():
             form.save()
             return redirect('core:register')
-    return render(request, 'core/register.html', {'form':form})
+    return render(request, 'core/User_crud/register.html', {'form':form})
 
 # ***** USERS - DETAIL VIEW
 def user_detail(request: HttpRequest, pk: int) -> HttpResponse:
     query = User.objects.get(id=pk)
-    return render(request, 'core/user_detail.html', {'object': query})
+    return render(request, 'core/User_crud/user_detail.html', {'object': query})
 
 
 # ***** USERS - DELETE VIEW
@@ -51,4 +51,4 @@ def user_delete(request: HttpRequest, pk: int) -> HttpResponse:
     if request.method == 'POST':
         query.delete()
         return redirect('core:users_list')
-    return render(request, 'core/user_delete_confirm.html', {'object': query})
+    return render(request, 'core/User_crud/user_delete_confirm.html', {'object': query})
