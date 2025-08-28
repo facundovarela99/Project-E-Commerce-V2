@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.http import HttpRequest, HttpResponse
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -18,6 +19,7 @@ def about(request):
     context = {"year":2025} #test variable
     return render(request, "core/main_templates/about.html", context)
 
+@login_required
 def products(request):
     context = {'year':2025}
     return render(request, "core/main_templates/products.html", context)
