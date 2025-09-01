@@ -15,6 +15,8 @@ urlpatterns = [
     path('products/', views.products, name='products'),
     path('register_user/', views.CustomRegisterView.as_view(), name='register_user'),
     path('profile/', views.UpdateProfileView.as_view(), name='profile'),
+    path('category/list', views.category_list, name='category_list'),
+    path('category/create', views.category_create, name='category_create'),
 ]
 
 #USER URLS

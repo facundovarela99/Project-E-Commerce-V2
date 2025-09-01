@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 # Create your models here.
 
@@ -30,6 +32,18 @@ class User(models.Model):
     def __str__(self):
         return f'{self.name} - {self.last_name} - {self.user_name}'
 
+class Category(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+    description = models.TextField(blank=True, null=True, verbose_name='Description')
+
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name = 'Product categories'
+    
+    def validate_unique(self, exclude =None):
+        return super().validate_unique(exclude)
+
 #Created product model as a starting point to implement Class-based views (Go to core/view_models/product.py)
 class Product(models.Model):
     name = models.CharField(max_length=50)
@@ -37,3 +51,7 @@ class Product(models.Model):
     stock = models.IntegerField(null=False)
     def __str__(self):
         return f'{self.name} - {self.description}'
+    
+
+class Seller(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='seller')

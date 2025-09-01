@@ -10,22 +10,33 @@ from django.contrib.auth.models import User
 # from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_not_required
+from core import models
+from .models import Category
 
 
-@login_not_required
+
+@method_decorator(login_not_required, name='dispatch')
 def index(request):
     context = {"year":2025} #test variable
     return render(request, "core/main_templates/index.html", context)
 
-@login_not_required
+@method_decorator(login_not_required, name='dispatch')
 def about(request):
     context = {"year":2025} #test variable
     return render(request, "core/main_templates/about.html", context)
 
-@login_not_required
+@method_decorator(login_not_required, name='dispatch')
 def products(request):
     context = {'year':2025}
     return render(request, "core/main_templates/products.html", context)
+
+@method_decorator(login_not_required, name='dispatch')
+def category_list(request):
+    categories = models.Category.objects.all()
+    return render(request, 'core/Product_crud/category_list.html', {'categories': categories})
+
+def category_create(request):
+    return render(request, 'core/Product_crud/category_form.html')
 
 class CustomLoginView(LoginView):
     authentication_form = CustomAuthenticationForm
