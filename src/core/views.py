@@ -7,19 +7,22 @@ from django.contrib import messages
 from django.http import HttpRequest, HttpResponse
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User
-from django.contrib.auth.decorators import login_required
+# from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_not_required
 
 
-
+@login_not_required
 def index(request):
     context = {"year":2025} #test variable
     return render(request, "core/main_templates/index.html", context)
 
+@login_not_required
 def about(request):
     context = {"year":2025} #test variable
     return render(request, "core/main_templates/about.html", context)
 
-@login_required
+@login_not_required
 def products(request):
     context = {'year':2025}
     return render(request, "core/main_templates/products.html", context)
@@ -34,6 +37,7 @@ class CustomLoginView(LoginView):
         messages.success(self.request, f'Successful login. Welcome {user.username}')
         return super().form_valid(form)
     
+@method_decorator(login_not_required, name='dispatch')
 class CustomRegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = "core/main_templates/register_user_admin.html"
