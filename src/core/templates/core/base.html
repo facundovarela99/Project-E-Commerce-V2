@@ -14,7 +14,7 @@
         <ul>
             {% if user.is_authenticated %}
             <li><a href="{% url 'core:index' %}"><button>HOME</button></a></li>
-            <li><a href="{% url 'core:category_list' %}"><button>CATEGORY LIST</button></a></li>
+            <li><a href="{% url 'product:category_list' %}"><button>CATEGORY LIST</button></a></li>
             <li><a href="{% url 'core:products' %}"><button>PRODUCTS JS TEST</button></a></li>
             <li><a href="{% url 'product:index' %}"><button>GO TO PRODUCTS</button></a></li>
             <li><a href=""><button>BRANCHES</button></a></li>

@@ -20,6 +20,6 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('core.urls')), #core/ puede ser modificado. code.urls es la variable app_name en urls.py de la app
-    path('product', include('product.urls'))
+    path('product/', include('product.urls'))
 ]
 
