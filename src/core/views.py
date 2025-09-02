@@ -13,21 +13,18 @@ from django.shortcuts import render
 # from core import models
 # from .models import Category
 
-
+context = {"year":2025} #test variable
 
 # @method_decorator(login_not_required, name='dispatch')
 def index(request):
-    context = {"year":2025} #test variable
     return render(request, "core/main_templates/index.html", context)
 
 # @method_decorator(login_not_required, name='dispatch')
 def about(request):
-    context = {"year":2025} #test variable
     return render(request, "core/main_templates/about.html", context)
 
 # @method_decorator(login_not_required, name='dispatch')
 def products(request):
-    context = {'year':2025}
     return render(request, "core/main_templates/products.html", context)
 
 # @method_decorator(login_not_required, name='dispatch')
