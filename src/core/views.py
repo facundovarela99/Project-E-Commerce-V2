@@ -32,8 +32,7 @@ def products(request):
 #     categories = models.Category.objects.all()
 #     return render(request, 'core/Product_crud/category_list.html', {'categories': categories})
 
-# def category_create(request):
-#     return render(request, 'core/Product_crud/category_form.html')
+
 
 # class CustomLoginView(LoginView):
 #     authentication_form = CustomAuthenticationForm

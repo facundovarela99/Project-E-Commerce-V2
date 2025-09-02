@@ -1,0 +1,12 @@
+{% extends 'core/base.html' %}
+{% block title %}
+Category Form
+{% endblock title %}
+
+{% block content %}
+<h1>Product - Categories: Form</h1>
+<form>
+    {{ form.as_p }}
+</form>
+<a href="{% url 'product:index' %}"><button>BACK</button></a>
+{% endblock content %}

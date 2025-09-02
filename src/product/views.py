@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from . import models
+from . import models, forms
 
 context = {"year":2025}
 
@@ -11,3 +11,9 @@ def category_list(request):
     context2 = context.copy()
     context2.update({"categories":categories})
     return render(request, 'product/category_list.html', context2)
+
+def category_create(request):
+    form = forms.CategoryForm()
+    context2 = context.copy()
+    context2.update({'form':form})
+    return render(request, 'product/category_form.html', context2)
