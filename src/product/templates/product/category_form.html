@@ -5,8 +5,10 @@ Category Form
 
 {% block content %}
 <h1>Product - Categories: Form</h1>
-<form>
+<form method="post">
+    {% csrf_token %}
     {{ form.as_p }}
+    <button type="submit">SEND</button>
 </form>
 <a href="{% url 'product:index' %}"><button>BACK</button></a>
 {% endblock content %}
