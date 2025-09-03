@@ -6,14 +6,19 @@
     <input type="text" name="busqueda" id="" placeholder="Search product...">
     <button type="submit">Search</button>
 </form>
-<a href="{% url 'core:product_create' %}">
+{% comment  %}
+    
+<a href="{% url 'product:product_create' %}">
     <button>Create product</button>
 </a>
+{% endcomment %}
 <table class="tablaPrueba">
     <thead>
         <tr>
-            <th>PRODUCT</th>
+            <th>CATEGORY</th>
+            <th>NAME</th>
             <th>DESCRIPTION</th>
+            <th>PRICE</th>
             <th>STOCK</th>
             <th>ACTIONS</th>
         </tr>
@@ -21,19 +26,23 @@
     <tbody>
         {% for product in object_list %}
         <tr>
+            <td> {{ product.category }}</td>
             <td> {{ product.name }}</td>
             <td> {{ product.description }}</td>
+            <td> {{ product.price }}</td>
             <td> {{ product.stock }}</td>
             <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
+            {% comment %}
             <td>
-                <a href="{% url 'core:update_product' product.id %}">
+
+                <a href="{% url 'product:product_update' product.id %}">
                     <button>EDIT</button></a>
-                <a href="{% url 'core:product_detail' product.id %}">
+                <a href="{% url 'product:product_detail' product.id %}">
                     <button>VIEW</button></a>
-                <a href="{% url 'core:product_delete' product.id %}">
+                <a href="{% url 'product:product_delete' product.id %}">
                     <button>DELETE</button></a>
             </td>
-            <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
+            {% endcomment %}
         </tr>
         {% empty %}
         <tr>

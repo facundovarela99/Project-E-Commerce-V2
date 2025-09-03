@@ -1,13 +1,25 @@
 from django.urls import path
 from . import views
+from product.views_models import category, product
 
 app_name = 'product'
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('category/list', views.category_list, name='category_list'),
-    path('category/create', views.category_create, name='category_create'),
-    path('category/update/<int:pk>', views.category_update, name='category_update'),
-    path('category/detail/<int:pk>', views.category_detail, name='category_detail'),
-    path('category/delete/<int:pk>', views.category_delete, name='category_delete'),
+]
+
+urlpatterns+=[
+    path('category/list', category.category_list, name='category_list'),
+    path('category/create', category.category_create, name='category_create'),
+    path('category/update/<int:pk>', category.category_update, name='category_update'),
+    path('category/detail/<int:pk>', category.category_detail, name='category_detail'),
+    path('category/delete/<int:pk>', category.category_delete, name='category_delete'),
+]
+
+urlpatterns+=[
+    path('product/list', product.ProductListView.as_view(), name='product_list'),
+    # path('product/create', product.category_create, name='category_create'),
+    # path('product/update/<int:pk>', product.category_update, name='category_update'),
+    # path('product/detail/<int:pk>', product.category_detail, name='category_detail'),
+    # path('product/delete/<int:pk>', product.category_delete, name='category_delete'),
 ]
