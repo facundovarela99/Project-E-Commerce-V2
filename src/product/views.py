@@ -40,3 +40,10 @@ def category_update(request: HttpRequest, pk: int) -> HttpResponse:
     context2 = context.copy()
     context2.update({'form':form})
     return render(request, 'product/category_form.html', context2)
+
+# --------------CATEGORY - DETAIL VIEW--------------
+def category_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = models.Category.objects.get(id=pk)
+    context2= context.copy()
+    context2.update({'object':query})
+    return render(request, 'product/category_detail.html', context2)

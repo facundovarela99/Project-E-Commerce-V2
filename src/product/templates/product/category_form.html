@@ -4,7 +4,11 @@ Category Form
 {% endblock title %}
 
 {% block content %}
+{% if form.instance.pk %}
+<h1>Product - Categories: Edit form</h1>
+{% else %}
 <h1>Product - Categories: Creation form</h1>
+{% endif %}
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
