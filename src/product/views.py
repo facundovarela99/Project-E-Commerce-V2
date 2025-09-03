@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect
 from . import models, forms
+from django.http import HttpRequest, HttpResponse
 
 context = {"year":2025}
 
 def index(request):
     return render(request, 'product/index.html', context)
 
-def category_list(request):
-    categories = models.Category.objects.all()
+# --------------CATEGORY - LIST VIEW--------------
+def category_list(request: HttpRequest) -> HttpResponse: #anotación de tipo (HttpRequest) que devuelve una respuesta
+    queryset = models.Category.objects.all()
     context2 = context.copy()
-    context2.update({"categories":categories})
+    context2.update({"object_list":queryset})
     return render(request, 'product/category_list.html', context2)
 
-def category_create(request):
+def category_create(request: HttpRequest) -> HttpResponse: 
     if request.method == 'GET':
         form = forms.CategoryForm
     if request.method == 'POST':

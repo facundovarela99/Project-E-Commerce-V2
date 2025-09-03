@@ -5,8 +5,9 @@
     
 <h1>Product</h1>
 <h2>Categories List</h2>
+<a href="{% url 'product:category_create' %}"><button>CREATE CATEGORY</button></a>
 <ul>
-    {% for category in categories %}
+    {% for category in object_list %}
         <li>{{ category }}</li>
     {% endfor %}
 </ul>
