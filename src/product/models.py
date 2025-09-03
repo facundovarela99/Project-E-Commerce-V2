@@ -18,3 +18,20 @@ class Category(models.Model):
     def get_absolute_url(self):
         pass
     #Representa la instancia - utilizar para reemplazar el envío de la primary key por el Front
+
+class Product(models.Model):
+    category=models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True, verbose_name='category')
+    name = models.CharField(max_length=150, db_index=True) #facilita la búsqueda en la BD
+    description = models.TextField(blank=True, null=True, verbose_name='Description') #blank: el campo puede dejarse vacío cuando es True
+    # img = models.ImageField(blank=True, null=True, verbose_name='productImage')Pendiente agregar imagenes
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    stock = models.PositiveIntegerField()
+
+    def __str__(self):
+        if self.category:
+            return f"{self.category} - {self.name}"
+        return self.name
+    class Meta: #Se utiliza para definir opciones de configuración adicionales de un modelo
+        unique_together = ('category', 'name') #la combinación de los campos debe ser única en la BD
+        verbose_name = 'Product' #Define el nombre singular legible del modelo (también usado en el panel de ADMIN)
+        verbose_name_plural = 'Products' #Define el nombre plurar legible del modelo (también usado en el panel de ADMIN)
