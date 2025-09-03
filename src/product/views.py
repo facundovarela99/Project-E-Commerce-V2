@@ -12,7 +12,7 @@ def category_list(request: HttpRequest) -> HttpResponse: #anotación de tipo (Ht
     queryset = models.Category.objects.all()
     context2 = context.copy()
     context2.update({"object_list":queryset})
-    return render(request, 'product/category_list.html', context2)
+    return render(request, 'product/Category_crud/category_list.html', context2)
 
 # --------------CATEGORY - CREATE VIEW--------------
 def category_create(request: HttpRequest) -> HttpResponse: 
@@ -25,7 +25,7 @@ def category_create(request: HttpRequest) -> HttpResponse:
             return redirect('product:category_list')
     context2 = context.copy()
     context2.update({'form':form})
-    return render(request, 'product/category_form.html', context2)
+    return render(request, 'product/Category_crud/category_form.html', context2)
 
 # --------------CATEGORY - UPDATE VIEW--------------
 def category_update(request: HttpRequest, pk: int) -> HttpResponse: 
@@ -39,11 +39,22 @@ def category_update(request: HttpRequest, pk: int) -> HttpResponse:
             return redirect('product:category_list')
     context2 = context.copy()
     context2.update({'form':form})
-    return render(request, 'product/category_form.html', context2)
+    return render(request, 'product/Category_crud/category_form.html', context2)
 
 # --------------CATEGORY - DETAIL VIEW--------------
 def category_detail(request: HttpRequest, pk: int) -> HttpResponse:
     query = models.Category.objects.get(id=pk)
     context2= context.copy()
     context2.update({'object':query})
-    return render(request, 'product/category_detail.html', context2)
+    return render(request, 'product/Category_crud/category_detail.html', context2)
+
+
+# --------------CATEGORY - DELETE VIEW--------------
+def category_delete(request: HttpRequest, pk: int) -> HttpResponse:
+    query = models.Category.objects.get(id=pk)
+    if request.method == 'POST':
+        query.delete()
+        return redirect('product:category_list')
+    context2= context.copy()
+    context2.update({'object':query})
+    return render(request, 'product/Category_crud/category_confirm_delete.html', context2)
