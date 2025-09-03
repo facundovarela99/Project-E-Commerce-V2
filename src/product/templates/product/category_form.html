@@ -4,11 +4,11 @@ Category Form
 {% endblock title %}
 
 {% block content %}
-<h1>Product - Categories: Form</h1>
+<h1>Product - Categories: Creation form</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">SEND</button>
 </form>
-<a href="{% url 'product:index' %}"><button>BACK</button></a>
+<a href="{% url 'product:category_list' %}"><button>BACK</button></a>
 {% endblock content %}
