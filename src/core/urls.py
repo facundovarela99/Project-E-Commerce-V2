@@ -9,10 +9,10 @@ app_name = 'core' #nombre para llamar en las URLS de config
 
 urlpatterns = [
     path('', views.index, name='index'),
-    # path('login/', views.CustomLoginView.as_view(), name='login'),
-    # path('logout/', LogoutView.as_view(template_name='core/main_templates/logout.html'), name='logout'),
     path('about/', views.about, name='about'),
     path('products/', views.products, name='products'),
+    path('login/', views.CustomLoginView.as_view(), name='login'),
+    # path('logout/', LogoutView.as_view(template_name='core/main_templates/logout.html'), name='logout'),
     # path('register_user/', views.CustomRegisterView.as_view(), name='register_user'),
     # path('profile/', views.UpdateProfileView.as_view(), name='profile'),
     # path('category/list', views.category_list, name='category_list'),

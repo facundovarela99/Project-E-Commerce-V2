@@ -1,9 +1,11 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.contrib.auth.views import LoginView
+from .forms import CustomAuthenticationForm, AuthenticationForm
+from django.urls import reverse_lazy
+from django.contrib import messages
 # from datetime import datetime, date, timedelta
 # from django.contrib.auth.views import LoginView
-# from .forms import AuthenticationForm,CustomAuthenticationForm, CustomUserCreationForm, UserProfileForm
-# from django.urls import reverse_lazy
-# from django.contrib import messages
 # from django.http import HttpRequest, HttpResponse
 # from django.views.generic import CreateView, UpdateView
 # from django.contrib.auth.models import User
@@ -27,22 +29,15 @@ def about(request):
 def products(request):
     return render(request, "core/main_templates/products.html", context)
 
-# @method_decorator(login_not_required, name='dispatch')
-# def category_list(request):
-#     categories = models.Category.objects.all()
-#     return render(request, 'core/Product_crud/category_list.html', {'categories': categories})
+class CustomLoginView(LoginView):
+    authentication_form = CustomAuthenticationForm
+    template_name = 'core/main_templates/login.html'
+    next_page = reverse_lazy('core:index')
 
-
-
-# class CustomLoginView(LoginView):
-#     authentication_form = CustomAuthenticationForm
-#     template_name = 'core/main_templates/login.html'
-#     next_page = reverse_lazy('core:index')
-
-#     def form_valid(self, form: AuthenticationForm) -> HttpResponse:
-#         user = form.get_user()
-#         messages.success(self.request, f'Successful login. Welcome {user.username}')
-#         return super().form_valid(form)
+    def form_valid(self, form: AuthenticationForm) -> HttpResponse: #Cuando el formulario sea valido
+        user = form.get_user()
+        messages.success(self.request, f'Successful login. Welcome {user.username}')
+        return super().form_valid(form)
     
 # @method_decorator(login_not_required, name='dispatch')
 # class CustomRegisterView(CreateView):
