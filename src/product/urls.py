@@ -18,7 +18,7 @@ urlpatterns+=[
 
 urlpatterns+=[
     path('product/list', product.ProductListView.as_view(), name='product_list'),
-    # path('product/create', product.category_create, name='category_create'),
+    path('product/create', product.ProductCreateView.as_view(), name='product_create'),
     # path('product/update/<int:pk>', product.category_update, name='category_update'),
     # path('product/detail/<int:pk>', product.category_detail, name='category_detail'),
     # path('product/delete/<int:pk>', product.category_delete, name='category_delete'),

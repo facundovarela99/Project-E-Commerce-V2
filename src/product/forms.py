@@ -18,7 +18,7 @@ class CategoryForm(forms.ModelForm): #Clase que nos permite trabajar los formula
 
 class ProductForm(forms.ModelForm):
     class Meta:
-        models = models.Product
+        model = models.Product
         fields = ['category','name', 'description', 'price', 'stock']
     def clean_name(self):
         name: str = self.cleaned_data.get('name', '')
