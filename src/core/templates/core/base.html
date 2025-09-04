@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,13 +13,20 @@
 <body>
     <header>
         <ul>
+            {% if user.is_authenticated %}
             <li><a href="{% url 'core:index' %}"><button>HOME</button></a></li>
-            <li><a href="{% url 'core:login' %}"><button>LOG IN</button></a></li>
-            <li><a href="{% url 'core:register' %}"><button>CREATE NEW ACCOUNT</button></a></li>
             <li><a href="{% url 'core:products' %}"><button>PRODUCTS JS TEST</button></a></li>
             <li><a href="{% url 'product:index' %}"><button>GO TO PRODUCTS</button></a></li>
             <li><a href="{% url 'core:about' %}"><button>ABOUT</button></a></li>
+            <form action="{% url 'core:logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">LOG OUT</button></a>
+            </form>
         </ul>
+        {% else %}
+        <li><a href="{% url 'core:login' %}"><button>LOG IN</button></a></li>
+        <li><a href="{% url 'core:register' %}"><button>CREATE NEW ACCOUNT</button></a></li>
+        {% endif %}
     </header>
     <main>
         {% block content %}
