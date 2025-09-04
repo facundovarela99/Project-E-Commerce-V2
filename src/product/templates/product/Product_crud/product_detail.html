@@ -4,6 +4,7 @@
 
     <h1>PRODUCT DETAIL</h1>
     <ul>
+        <li><strong>Category:</strong> {{ object.category }}</li>
         <li><strong>Name:</strong> {{ object.name }}</li>
         <li><strong>Description:</strong>
         {% if object.description %}
@@ -13,6 +14,7 @@
         {% endif %}
         </li>
         <li><strong>Stock:</strong> {{ object.stock }}</li>
+        <li><strong>Price per unit:</strong> ${{ object.price }}</li>
     </ul>
-    <a href="{% url 'core:product_list' %}"><button>Go back</button></a>
+    <a href="{% url 'product:product_list' %}"><button>Go back</button></a>
 {% endblock content %}

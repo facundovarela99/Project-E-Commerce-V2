@@ -20,6 +20,6 @@ urlpatterns+=[
     path('product/list', product.ProductListView.as_view(), name='product_list'),
     path('product/create', product.ProductCreateView.as_view(), name='product_create'),
     path('product/update/<int:pk>', product.ProductUpdateView.as_view(), name='product_update'),
-    # path('product/detail/<int:pk>', product.category_detail, name='product_detail'),
-    # path('product/delete/<int:pk>', product.category_delete, name='product_delete'),
+    path('product/detail/<int:pk>', product.ProductDetailView.as_view(), name='product_detail'),
+    path('product/delete/<int:pk>', product.ProductDeleteView.as_view(), name='product_delete'),
 ]

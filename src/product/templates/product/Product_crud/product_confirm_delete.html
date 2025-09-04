@@ -7,4 +7,5 @@
         {% csrf_token %}
         <button type="submit" style="background-color: brown; color: aliceblue;">CONFIRM</button>
     </form>
+    <a href="{% url 'product:product_list' %}"><button>Go Back</button></a>
 {% endblock content %}
