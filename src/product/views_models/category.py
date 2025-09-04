@@ -6,7 +6,11 @@ context = {"year":2025}
 
 # --------------CATEGORY - LIST VIEW--------------FUNCTION-BASED VIEW
 def category_list(request: HttpRequest) -> HttpResponse: #anotación de tipo (HttpRequest) que devuelve una respuesta
-    queryset = models.Category.objects.all() #Se llama a todos los registros de la base de datos (puede paginarse/filtrarse a demanda)
+    search = request.GET.get('query')
+    if search:
+        queryset = models.Category.objects.filter(name__icontains=request.GET.get('query'))
+    else:
+        queryset = models.Category.objects.all() #Se llama a todos los registros de la base de datos (puede paginarse/filtrarse a demanda)
     context2 = context.copy()
     context2.update({"object_list":queryset})
     return render(request, 'product/Category_crud/category_list.html', context2)
