@@ -29,17 +29,17 @@
             <td> {{ product.price }}</td>
             <td> {{ product.stock }}</td>
             <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
-            {% comment %}
             <td>
-
+                
                 <a href="{% url 'product:product_update' product.id %}">
                     <button>EDIT</button></a>
+                    {% comment %}
                 <a href="{% url 'product:product_detail' product.id %}">
                     <button>VIEW</button></a>
                 <a href="{% url 'product:product_delete' product.id %}">
                     <button>DELETE</button></a>
+                    {% endcomment %}
             </td>
-            {% endcomment %}
         </tr>
         {% empty %}
         <tr>
