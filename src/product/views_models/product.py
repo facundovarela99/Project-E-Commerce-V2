@@ -8,6 +8,14 @@ context = {"year":2025}
 class ProductListView(ListView):
     model = models.Product
     template_name = 'product/Product_crud/product_list.html'
+    def get_queryset(self):
+        search = self.request.GET.get('search')
+        if search:
+            queryset = models.Product.objects.filter(name__icontains=search)
+        else:
+            #queryset = super().get_queryset()
+            queryset = models.Product.objects.all()
+        return queryset
 
 # --------------PRODUCT - CREATE VIEW--------------CLASS-BASED VIEW
 class ProductCreateView(CreateView):
