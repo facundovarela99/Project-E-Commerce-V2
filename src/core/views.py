@@ -1,13 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.views import LoginView
-from .forms import CustomAuthenticationForm, AuthenticationForm
+from .forms import CustomAuthenticationForm, AuthenticationForm, CustomUserCreationForm
 from django.urls import reverse_lazy
 from django.contrib import messages
 # from datetime import datetime, date, timedelta
 # from django.contrib.auth.views import LoginView
 # from django.http import HttpRequest, HttpResponse
-# from django.views.generic import CreateView, UpdateView
+from django.views.generic import CreateView, UpdateView
 # from django.contrib.auth.models import User
 # # from django.contrib.auth.decorators import login_required
 # from django.utils.decorators import method_decorator
@@ -40,14 +40,14 @@ class CustomLoginView(LoginView):
         return super().form_valid(form)
     
 # @method_decorator(login_not_required, name='dispatch')
-# class CustomRegisterView(CreateView):
-#     form_class = CustomUserCreationForm
-#     template_name = "core/main_templates/register_user_admin.html"
-#     success_url = reverse_lazy("core:login")
+class CustomRegisterView(CreateView):
+    form_class = CustomUserCreationForm
+    template_name = "core/main_templates/register.html"
+    success_url = reverse_lazy("core:login")
 
-#     def form_valid(self, form: CustomUserCreationForm) -> HttpResponse:
-#         messages.success(self.request, f'Successful registration. You can log in now.')
-#         return super().form_valid(form)
+    def form_valid(self, form: CustomUserCreationForm) -> HttpResponse:
+        messages.success(self.request, f'Successful registration. You can log in now.')
+        return super().form_valid(form)
     
 
 # class UpdateProfileView(UpdateView):

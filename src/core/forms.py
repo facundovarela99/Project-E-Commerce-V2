@@ -39,7 +39,7 @@ class CustomAuthenticationForm(AuthenticationForm):
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2']
+        fields = ['username', 'password1', 'password2'] #campos pre-establecidos del UserCreationForm
         help_texts = {'username': ''}
     def __init__(self, *args, **kwargs: any) -> None:
         super().__init__(*args, **kwargs)
