@@ -10,3 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_display_links = ('name',)
     list_filter = ('category',)
     search_fields = ('category', 'name')
+
+
+admin.site.register(models.Seller)
+admin.site.register(models.Sale)
