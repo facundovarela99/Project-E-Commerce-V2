@@ -14,7 +14,7 @@ urlpatterns = [
     path('register/', views.CustomRegisterView.as_view(), name='register'),
     path('login/', views.CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(template_name='core/main_templates/logout.html'), name='logout'),
-    # path('profile/', views.UpdateProfileView.as_view(), name='profile'),
+    path('profile/', views.UpdateProfileView.as_view(), name='profile'),
     # path('category/list', views.category_list, name='category_list'),
     # path('category/create', views.category_create, name='category_create'),
 ]

@@ -4,11 +4,12 @@ from django.contrib.auth.views import LoginView
 from .forms import CustomAuthenticationForm, AuthenticationForm, CustomUserCreationForm
 from django.urls import reverse_lazy
 from django.contrib import messages
+from .forms import UserProfileForm
 # from datetime import datetime, date, timedelta
 # from django.contrib.auth.views import LoginView
 # from django.http import HttpRequest, HttpResponse
 from django.views.generic import CreateView, UpdateView
-# from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 # # from django.contrib.auth.decorators import login_required
 # from django.utils.decorators import method_decorator
 # from django.contrib.auth.decorators import login_not_required
@@ -50,12 +51,12 @@ class CustomRegisterView(CreateView):
         return super().form_valid(form)
     
 
-# class UpdateProfileView(UpdateView):
-#     model = User
-#     form_class = UserProfileForm
-#     template_name = 'core/main_templates/profile.html'
-#     success_url = reverse_lazy('core:index')
+class UpdateProfileView(UpdateView):
+    model = User
+    form_class = UserProfileForm
+    template_name = 'core/main_templates/profile.html'
+    success_url = reverse_lazy('core:index')
 
-#     def get_object(self):
-#         #Devuelve el usuario actual en lugar de esperar un pk
-#         return self.request.user
+    def get_object(self):
+        #Devuelve el usuario actual en lugar de esperar un pk
+        return self.request.user
