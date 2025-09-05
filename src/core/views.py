@@ -10,9 +10,9 @@ from .forms import UserProfileForm
 # from django.http import HttpRequest, HttpResponse
 from django.views.generic import CreateView, UpdateView
 from django.contrib.auth.models import User
-# # from django.contrib.auth.decorators import login_required
-# from django.utils.decorators import method_decorator
-# from django.contrib.auth.decorators import login_not_required
+# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_not_required #Decorador que obliga al cliente ingresar con un usuario, Excepto las vistas seleccionadas
+from django.utils.decorators import method_decorator  
 # from core import models
 # from .models import Category
 
@@ -40,7 +40,7 @@ class CustomLoginView(LoginView):
         messages.success(self.request, f'Successful login. Welcome {user.username}')
         return super().form_valid(form)
     
-# @method_decorator(login_not_required, name='dispatch')
+@method_decorator(login_not_required, name="dispatch")
 class CustomRegisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = "core/main_templates/register.html"
