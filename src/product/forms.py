@@ -23,3 +23,8 @@ class ProductForm(forms.ModelForm):
     def clean_name(self):
         name: str = self.cleaned_data.get('name', '')
         return validate_name(name)
+    
+class SellerForm(forms.ModelForm):
+    class Meta:
+         model = models.Seller
+         fields = ['user', 'cellphone', 'user_img']

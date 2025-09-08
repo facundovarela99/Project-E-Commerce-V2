@@ -25,5 +25,6 @@ urlpatterns+=[
 ]
 
 urlpatterns+=[
-    path('seller/list', seller.seller_list, name='seller_list',)
+    path('seller/list', seller.seller_list, name='seller_list'),
+    path('seller/create', seller.seller_create, name='seller_create'),
 ]

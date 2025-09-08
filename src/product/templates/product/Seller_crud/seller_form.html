@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+{% block title %}
+Seller Form
+{% endblock title %}
+
+{% block content %}
+{% if form.instance.pk %}
+<h1>Product - Seller: Edit form</h1>
+{% else %}
+<h1>Product - Seller: Creation form</h1>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">SEND</button>
+</form>
+<a href="{% url 'product:seller_list' %}"><button>BACK</button></a>
+{% endblock content %}
