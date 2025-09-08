@@ -9,7 +9,7 @@ Seller Form
 {% else %}
 <h1>Product - Seller: Creation form</h1>
 {% endif %}
-<form method="post">
+<form method="post" enctype="multipart/form-data"> <!--enctype: necesario para subir las imagenes-->
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">SEND</button>

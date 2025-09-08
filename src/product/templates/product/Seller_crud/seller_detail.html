@@ -4,13 +4,13 @@
 
     <h1>SELLER DETAIL</h1>
     <ul>
-        <li><strong>User:</strong> {{ object.user }}</li>
+        <li><strong>User:</strong> {{ object.user.username }}</li>
         <li><strong>Cellphone: {{ object.cellphone}}</strong>
-        <li><strong>Avatar: {{ object.user_img}}</strong>
-        {% if object.description %}
-            {{ object.description }}
+        <li><strong>Avatar:</strong>
+        {% if object.user_img %}
+            <img src="{{ object.user_img.url }}" alt="Avatar" style="max-width: 200px;">
         {% else %}
-            -
+            Without avatar
         {% endif %}
         </li>
     </ul>

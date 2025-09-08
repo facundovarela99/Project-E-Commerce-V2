@@ -17,14 +17,21 @@
 <table class="tablaPrueba">
     <thead>
         <tr>
-            <th>SELLER</th>
-            <th>ACTIONS</th>
+            <th>User</th>
+            <th>Cellphone</th>
+            <th>Avatar</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for seller in object_list %}
         <tr>
-            <td> {{ seller }}</td>
+            <td> {{ seller.user.username }}</td>
+            <td> {{ seller.cellphone }}</td>
+            <td> {% if seller.user_img  %}
+                    <img src="{{ seller.user_img.url }}" alt="Avatar" style="max-width: 100px;">
+                {% endif %}
+            </td>
             
             <td>
                 <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->

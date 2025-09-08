@@ -18,7 +18,7 @@ def category_list(request: HttpRequest) -> HttpResponse: #anotación de tipo (Ht
 # --------------CATEGORY - CREATE VIEW--------------FUNCTION-BASED VIEW
 def category_create(request: HttpRequest) -> HttpResponse: 
     if request.method == 'GET':
-        form = forms.CategoryForm
+        form = forms.CategoryForm()
     if request.method == 'POST':
         form = forms.CategoryForm(request.POST) #Se crea una instancia de formulario que tendrá los datos que el usuario envió
         if form.is_valid():

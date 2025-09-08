@@ -19,9 +19,9 @@ def seller_list(request: HttpRequest) -> HttpResponse:
 # -------SELLER - CREATE VIEW-------FUNCTION-BASED VIEW
 def seller_create(request: HttpRequest) -> HttpResponse:
     if request.method == 'GET':
-        form = forms.SellerForm
+        form = forms.SellerForm()
     if request.method == 'POST':
-        form = forms.SellerForm(request.POST)
+        form = forms.SellerForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('product:seller_list')
@@ -35,7 +35,7 @@ def seller_update(request: HttpRequest, pk: int) -> HttpResponse:
     if request.method == 'GET':
         form = forms.SellerForm(instance=query)
     if request.method == 'POST':
-        form = forms.SellerForm(request.POST, instance=query)
+        form = forms.SellerForm(request.POST, request.FILES, instance=query)
         if form.is_valid():
             form.save()
             return redirect('product:seller_list')

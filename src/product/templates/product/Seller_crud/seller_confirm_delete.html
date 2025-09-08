@@ -3,7 +3,7 @@
 {% block content %}
 
     <h1>SELLER DELETE</h1>
-    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <p>Are you sure you want to delete "{{ object.user.username }}"?</p>
     <form method="post">
         {% csrf_token %}
         <button type="submit">CONFIRM</button>
