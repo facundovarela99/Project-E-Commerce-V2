@@ -5,7 +5,7 @@ from django.urls import path
 from django.contrib.auth.views import LogoutView
 # from .views import UpdateProfileView
 from django.conf import settings
-from django.conf.urls.static import static
+from django.conf.urls.static import static #importación para indicarle la ruta de archivos de imágenes
 
 app_name = 'core' #nombre para llamar en las URLS de config
 
@@ -21,7 +21,7 @@ urlpatterns = [
     # path('category/create', views.category_create, name='category_create'),
 ]
 
-if settings.DEBUG:
+if settings.DEBUG: #Etapa de desarrollo
     urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 #USER URLS
