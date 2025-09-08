@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <h1>SELLER DELETE</h1>
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">CONFIRM</button>
+    </form>
+    <a href="{% url 'product:seller_list' %}"><button>Go back</button></a>
+{% endblock content %}
+
+<!-- PENDIENTE: realizar eliminación sin necesidad de una plantilla y poder realizarlo mediante JS -->

@@ -1,0 +1,18 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <h1>SELLER DETAIL</h1>
+    <ul>
+        <li><strong>User:</strong> {{ object.user }}</li>
+        <li><strong>Cellphone: {{ object.cellphone}}</strong>
+        <li><strong>Avatar: {{ object.user_img}}</strong>
+        {% if object.description %}
+            {{ object.description }}
+        {% else %}
+            -
+        {% endif %}
+        </li>
+    </ul>
+    <a href="{% url 'product:seller_list' %}"><button>Go back</button></a>
+{% endblock content %}

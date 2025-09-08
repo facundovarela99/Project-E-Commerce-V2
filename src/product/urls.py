@@ -28,4 +28,6 @@ urlpatterns+=[
     path('seller/list', seller.seller_list, name='seller_list'),
     path('seller/create', seller.seller_create, name='seller_create'),
     path('seller/update/<int:pk>', seller.seller_update, name='seller_update'),
+    path('seller/detail/<int:pk>', seller.seller_detail, name='seller_detail'),
+    path('seller/delete/<int:pk>', seller.seller_delete, name='seller_delete'),
 ]
