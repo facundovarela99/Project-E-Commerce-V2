@@ -28,3 +28,16 @@ def seller_create(request: HttpRequest) -> HttpResponse:
     context2 = context.copy()
     context2.update({'form':form})
     return render(request, 'product/Seller_crud/seller_form.html', context2)
+
+def seller_update(request: HttpRequest, pk: int) -> HttpResponse:
+    query = models.Category.objects.get(id=pk)
+    if request.method == 'GET':
+        form = forms.SellerForm(instance=query)
+    if request.method == 'POST':
+        form = forms.CategoryForm(request.POST, instance=query)
+        if form.is_valid():
+            form.save()
+            return redirect('product:seller_list')
+    context2 = context.copy()
+    context2.update({"form":form})
+    return render(request, 'product/Seller_crud/seller_form.html', context2)

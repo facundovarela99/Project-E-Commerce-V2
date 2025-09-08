@@ -27,10 +27,10 @@
             <td> {{ seller }}</td>
             
             <td>
+                <a href="{% url 'product:seller_update' seller.id %}"><button>EDIT</button></a>
                 {% comment  %}
                 <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
                 <a href="{% url 'product:category_detail' category.id %}"><button>DETAIL</button></a>
-                <a href="{% url 'product:category_update' category.id %}"><button>EDIT</button></a>
                 <a href="{% url 'product:category_delete' category.id %}"><button>DELETE</button></a>
                 {% endcomment %}
             </td>
