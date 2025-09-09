@@ -28,7 +28,8 @@
         <tr>
             <td> {{ seller.user.username }}</td>
             <td> {{ seller.cellphone }}</td>
-            <td> {% if seller.user_img  %}
+            <td>
+                {% if seller.user_img  %}
                     <img src="{{ seller.user_img.url }}" alt="Avatar" style="max-width: 100px;">
                 {% endif %}
             </td>

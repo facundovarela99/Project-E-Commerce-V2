@@ -13,7 +13,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Seller)
-admin.site.register(models.Sale)
 
+@admin.register(models.Sale)
 class SaleAdmin(admin.ModelAdmin):
     list_display = ('seller', 'product', 'amount', 'total_price', 'sell_date')

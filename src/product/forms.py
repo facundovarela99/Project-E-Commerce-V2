@@ -28,3 +28,8 @@ class SellerForm(forms.ModelForm):
     class Meta:
          model = models.Seller
          fields = ['user', 'cellphone', 'user_img']
+
+class SaleForm(forms.ModelForm):
+     class Meta:
+          model = models.Sale
+          fields = ['seller', 'product', 'amount']
