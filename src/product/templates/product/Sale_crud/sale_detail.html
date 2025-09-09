@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+    <h1>SALE DETAIL</h1>
+    <ul>
+        <li><strong>Seller:</strong> {{ object.user.username }}</li>
+        <li><strong>Product: {{ object.product}}</strong></li>
+        <li><strong>Amount: {{ object.amount }}</strong></li>
+        <li><strong>Total price: {{ object.total_price }}</strong></li>
+        <li><strong>Sale date: {{ object.sell_date }}</strong></li>
+    </ul>
+    <a href="{% url 'product:sale_list' %}"><button>Go back</button></a>
+{% endblock content %}

@@ -36,6 +36,6 @@ urlpatterns+=[
     path('sale/list', sale.sale_list, name='sale_list'),
     path('sale/create', sale.sale_create, name='sale_create'),
     path('sale/update/<int:pk>', sale.sale_update, name='sale_update'),
-#     path('sale/detail/<int:pk>', sale.sale_detail, name='sale_detail'),
+    path('sale/detail/<int:pk>', sale.sale_detail, name='sale_detail'),
 #     path('sale/delete/<int:pk>', sale.sale_delete, name='sale_delete'),
 ]

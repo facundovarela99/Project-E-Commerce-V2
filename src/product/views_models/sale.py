@@ -52,3 +52,10 @@ def sale_update(request: HttpRequest, pk: int) -> HttpResponse:
     context2 = context.copy()
     context2.update({'form':form})
     return render(request, 'product/Sale_crud/sale_form.html', context2)
+
+# -------SALE - DETAIL VIEW-------FUNCTION-BASED VIEW
+def sale_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    query = models.Sale.objects.get(id=pk)
+    context2 = context.copy()
+    context2.update({'object':query})
+    return render(request, 'product/Sale_crud/sale_detail.html', context2)

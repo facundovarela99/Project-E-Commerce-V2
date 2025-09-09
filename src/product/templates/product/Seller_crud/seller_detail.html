@@ -5,13 +5,13 @@
     <h1>SELLER DETAIL</h1>
     <ul>
         <li><strong>User:</strong> {{ object.user.username }}</li>
-        <li><strong>Cellphone: {{ object.cellphone}}</strong>
+        <li><strong>Cellphone: {{ object.cellphone}}</strong></li>
         <li><strong>Avatar:</strong>
-        {% if object.user_img %}
-            <img src="{{ object.user_img.url }}" alt="Avatar" style="max-width: 200px;">
-        {% else %}
-            Without avatar
-        {% endif %}
+            {% if object.user_img %}
+                <img src="{{ object.user_img.url }}" alt="Avatar" style="max-width: 200px;">
+            {% else %}
+                Without avatar
+            {% endif %}
         </li>
     </ul>
     <a href="{% url 'product:seller_list' %}"><button>Go back</button></a>
