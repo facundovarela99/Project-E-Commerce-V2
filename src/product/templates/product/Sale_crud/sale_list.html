@@ -35,9 +35,7 @@
                 <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
                 <a href="{% url 'product:sale_detail' sale.id %}"><button>DETAIL</button></a>
                 <a href="{% url 'product:sale_update' sale.id %}"><button>EDIT</button></a>
-                {% comment  %}
                 <a href="{% url 'product:sale_delete' sale.id %}"><button>DELETE</button></a>
-                {% endcomment %}
             </td>
         </tr>
         {% empty %}
