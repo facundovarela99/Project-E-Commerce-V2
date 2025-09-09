@@ -3,17 +3,14 @@
 
 {% block content %}
 
-<h1>Sellers</h1>
+<h1>Sales</h1>
 
 <form method="get" action="">
     <input type="text" name="query" placeholder="Search...">
     <button type="submit">Search</button>
 </form>
 
-
-{% comment  %}
-<a href="{% url 'product:sale_create' %}"><button>CREATE SELLER</button></a>
-{% endcomment %}
+<a href="{% url 'product:sale_create' %}"><button>CREATE SALE</button></a>
 
 <table class="tablaPrueba">
     <thead>
@@ -29,11 +26,11 @@
     <tbody>
         {% for sale in object_list %}
         <tr>
-            <td> {{ sale.seller }}</td>
-            <td> {{ sale.product }}</td>
+            <td> {{ sale.seller.user.username }}</td>
+            <td> {{ sale.product.name }}</td>
             <td> {{ sale.amount }}</td>
             <td> {{ sale.total_price }}</td>
-            <td> {{ sale.sell_date }}</td>
+            <td> {{ sale.sell_date|date:'d/m/Y H:i' }}</td>
             {% comment  %}
             <td>
                 <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
