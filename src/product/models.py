@@ -49,8 +49,8 @@ class Seller(models.Model):
         return self.user.username
     
 class Sale(models.Model):
-    seller = models.ForeignKey(Seller, on_delete=models.DO_NOTHING)
-    product = models.ForeignKey(Product, on_delete=models.DO_NOTHING)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     amount = models.PositiveBigIntegerField()
     total_price = models.DecimalField(max_digits=10, decimal_places=2, editable=False)
     sell_date = models.DateTimeField(default=timezone.now, editable=False)

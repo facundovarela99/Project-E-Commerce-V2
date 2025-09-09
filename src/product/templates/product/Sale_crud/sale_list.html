@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+
+
+{% block content %}
+
+<h1>Sellers</h1>
+
+<form method="get" action="">
+    <input type="text" name="query" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
+
+
+{% comment  %}
+<a href="{% url 'product:sale_create' %}"><button>CREATE SELLER</button></a>
+{% endcomment %}
+
+<table class="tablaPrueba">
+    <thead>
+        <tr>
+            <th>Seller</th>
+            <th>Product</th>
+            <th>Amount</th>
+            <th>Total price</th>
+            <th>Sale date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sale in object_list %}
+        <tr>
+            <td> {{ sale.seller }}</td>
+            <td> {{ sale.product }}</td>
+            <td> {{ sale.amount }}</td>
+            <td> {{ sale.total_price }}</td>
+            <td> {{ sale.sell_date }}</td>
+            {% comment  %}
+            <td>
+                <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
+                <a href="{% url 'product:sale_detail' seller.id %}"><button>DETAIL</button></a>
+                <a href="{% url 'product:sale_update' seller.id %}"><button>EDIT</button></a>
+                <a href="{% url 'product:sale_delete' seller.id %}"><button>DELETE</button></a>
+            </td>
+            {% endcomment %}
+        </tr>
+        {% empty %}
+        <tr>
+            <td>No data available</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'product:index' %}"><button>BACK</button></a>
+{% endblock content %}

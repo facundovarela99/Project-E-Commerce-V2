@@ -14,3 +14,16 @@ def sale_list(request: HttpRequest) ->HttpResponse:
     context2 = context.copy()
     context2.update({'object_list':queryset})
     return render(request, 'product/Sale_crud/sale_list.html', context2)
+
+# # -------SALE - CREATE VIEW-------FUNCTION-BASED VIEW
+# def sale_create(request: HttpRequest) -> HttpResponse:
+#     if request.method == 'GET':
+#         form = forms.SaleForm()
+#     if request.method == 'POST':
+#         form = forms.SaleForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('product:sale_list')
+#     context2 = context.copy()
+#     context2.update({'form':form})
+#     return render(request, 'product/Sale_crud/sale_form.html')
