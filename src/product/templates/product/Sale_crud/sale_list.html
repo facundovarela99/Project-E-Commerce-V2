@@ -31,14 +31,14 @@
             <td> {{ sale.amount }}</td>
             <td> {{ sale.total_price }}</td>
             <td> {{ sale.sell_date|date:'d/m/Y H:i' }}</td>
-            {% comment  %}
             <td>
+                <a href="{% url 'product:sale_update' sale.id %}"><button>EDIT</button></a>
+                {% comment  %}
                 <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
-                <a href="{% url 'product:sale_detail' seller.id %}"><button>DETAIL</button></a>
-                <a href="{% url 'product:sale_update' seller.id %}"><button>EDIT</button></a>
-                <a href="{% url 'product:sale_delete' seller.id %}"><button>DELETE</button></a>
+                <a href="{% url 'product:sale_detail' sale.id %}"><button>DETAIL</button></a>
+                <a href="{% url 'product:sale_delete' sale.id %}"><button>DELETE</button></a>
+                {% endcomment %}
             </td>
-            {% endcomment %}
         </tr>
         {% empty %}
         <tr>

@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.db import transaction
 
 
 # Create your models here.
@@ -32,9 +33,11 @@ class Product(models.Model):
     stock = models.PositiveIntegerField()
 
     def __str__(self):
+        base = f'{self.name} - ${self.price}'
         if self.category:
-            return f"{self.category} - {self.name}"
-        return self.name
+            return f'{self.category} - {base}'
+        return base
+    
     class Meta: #Se utiliza para definir opciones de configuración adicionales de un modelo
         unique_together = ('category', 'name') #la combinación de los campos debe ser única en la BD
         verbose_name = 'Product' #Define el nombre singular legible del modelo (también usado en el panel de ADMIN)
@@ -61,7 +64,22 @@ class Sale(models.Model):
     def clean(self):
         if self.amount > self.product.stock:
             raise ValidationError("The amount cannot be greater than stock")
+    
+    def substract_stock(self):
+        self.product.stock -= self.amount
+        self.product.save()
 
+
+    @transaction.atomic
     def save(self, *args, **kwargs):
+        #calcula el precio
         self.total_price = self.product.price * self.amount
+        #valida antes de guardar
+        self.full_clean()
+        #guarda la venta
         super().save(*args, **kwargs)
+        #se resta el stock despues
+        self.substract_stock()
+
+    def __str__(self):
+        return f"{self.seller.user.username} - {self.product.name} - ${self.total_price}"
