@@ -61,17 +61,17 @@ class Sale(models.Model):
     class Meta:
         ordering = ("-sell_date",)
     
-    def clean(self):
-        if self.amount > self.product.stock:
-            raise ValidationError("The amount cannot be greater than stock")
+    # def clean(self): ACTUALEMNTE EN forms.py: clean_amount()
+    #     if self.amount > self.product.stock:
+    #         raise ValidationError("The amount cannot be greater than stock")
     
     def __str__(self):
         return f"{self.seller.user.username} - {self.product.name} - ${self.total_price}"
 
+
     # def substract_stock(self):
     #     self.product.stock -= self.amount
     #     self.product.save()
-
 
     # @transaction.atomic
     # def save(self, *args, **kwargs):

@@ -53,7 +53,9 @@ def seller_detail(request: HttpRequest, pk: int) -> HttpResponse:
 # -------SELLER - DELETE VIEW-------FUNCTION-BASED VIEW
 def seller_delete(request: HttpRequest, pk: int) -> HttpResponse:
     query = models.Seller.objects.get(id=pk)
+    # sale = models.Sale.objects.filter(seller_id=pk)
     if request.method == 'POST':
+        # sale.delete()
         query.delete()
         return redirect('product:seller_list')
     context2 = context.copy()

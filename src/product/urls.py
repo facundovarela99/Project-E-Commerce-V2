@@ -33,9 +33,9 @@ urlpatterns+=[
 ]
 
 urlpatterns+=[
-    path('sale/list', sale.sale_list, name='sale_list'),
-    path('sale/create', sale.sale_create, name='sale_create'),
-    path('sale/update/<int:pk>', sale.sale_update, name='sale_update'),
-    path('sale/detail/<int:pk>', sale.sale_detail, name='sale_detail'),
-    path('sale/delete/<int:pk>', sale.sale_delete, name='sale_delete'),
+    path('sale/list', sale.SaleListView.as_view(), name='sale_list'),
+    path('sale/create', sale.SaleCreateView.as_view(), name='sale_create'),
+    # path('sale/update/<int:pk>', sale.sale_update, name='sale_update'),
+    path('sale/detail/<int:pk>', sale.SaleDetailView.as_view(), name='sale_detail'),
+    path('sale/delete/<int:pk>', sale.saleDeleteView.as_view(), name='sale_delete'),
 ]

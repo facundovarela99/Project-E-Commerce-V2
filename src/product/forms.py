@@ -30,6 +30,19 @@ class SellerForm(forms.ModelForm):
          fields = ['user', 'cellphone', 'user_img']
 
 class SaleForm(forms.ModelForm):
-     class Meta:
+    class Meta:
           model = models.Sale
-          fields = ['seller', 'product', 'amount']
+          fields = ['product', 'amount']
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(SaleForm, self).__init__(*args, **kwargs)
+        if self.user:
+             seller = models.Seller.objects.get(user=self.user)
+             self.fields['seller'] = forms.CharField(initial=seller.user.username, widget=forms.TextInput(attrs={'readonly': 'readonly'}),)
+    
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+        product = self.cleaned_data.get('product')
+        if amount and product and amount > product.stock:
+             raise forms.ValidationError('The amount cannot be greater than stock')
+        return amount
