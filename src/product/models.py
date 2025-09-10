@@ -65,21 +65,24 @@ class Sale(models.Model):
         if self.amount > self.product.stock:
             raise ValidationError("The amount cannot be greater than stock")
     
-    def substract_stock(self):
-        self.product.stock -= self.amount
-        self.product.save()
-
-
-    @transaction.atomic
-    def save(self, *args, **kwargs):
-        #calcula el precio
-        self.total_price = self.product.price * self.amount
-        #valida antes de guardar
-        self.full_clean()
-        #guarda la venta
-        super().save(*args, **kwargs)
-        #se resta el stock despues
-        self.substract_stock()
-
     def __str__(self):
         return f"{self.seller.user.username} - {self.product.name} - ${self.total_price}"
+
+    # def substract_stock(self):
+    #     self.product.stock -= self.amount
+    #     self.product.save()
+
+
+    # @transaction.atomic
+    # def save(self, *args, **kwargs):
+    #     #calcula el precio
+    #     self.total_price = self.product.price * self.amount
+    #     #valida antes de guardar
+    #     self.full_clean()
+    #     #guarda la venta
+    #     super().save(*args, **kwargs)
+    #     #se resta el stock despues
+    #     self.substract_stock()
+
+    # def __str__(self):
+    #     return f"{self.seller.user.username} - {self.product.name} - ${self.total_price}"

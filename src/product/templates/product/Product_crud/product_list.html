@@ -6,9 +6,11 @@
     <input type="text" name="search" id="" placeholder="Search product...">
     <button type="submit">Search</button>
 </form>
+{% if user.is_staff %}    
 <a href="{% url 'product:product_create' %}">
     <button>Create product</button>
 </a>
+{% endif %}
 <table class="tablaPrueba">
     <thead>
         <tr>
@@ -30,13 +32,14 @@
             <td> {{ product.stock }}</td>
             <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
             <td>
-
+                <a href="{% url 'product:product_detail' product.id %}">
+                    <button>DETAIL</button></a>
+                {% if user.is_staff %}
                 <a href="{% url 'product:product_update' product.id %}">
                     <button>EDIT</button></a>
-                <a href="{% url 'product:product_detail' product.id %}">
-                    <button>VIEW</button></a>
                 <a href="{% url 'product:product_delete' product.id %}">
                     <button>DELETE</button></a>
+                {% endif %}
             </td>
         </tr>
         {% empty %}
