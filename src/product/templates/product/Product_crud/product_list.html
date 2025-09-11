@@ -6,7 +6,7 @@
     <input type="text" name="search" id="" placeholder="Search product...">
     <button type="submit">Search</button>
 </form>
-{% if user.is_staff %}    
+{% if user.request.is_staff %}    
 <a href="{% url 'product:product_create' %}">
     <button>Create product</button>
 </a>
