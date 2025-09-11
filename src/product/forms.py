@@ -37,9 +37,15 @@ class SaleForm(forms.ModelForm):
         self.user = kwargs.pop('user', None)
         super(SaleForm, self).__init__(*args, **kwargs)
         if self.user:
-             seller = models.Seller.objects.get(user=self.user)
-             self.fields['seller'] = forms.CharField(initial=seller.user.username, widget=forms.TextInput(attrs={'readonly': 'readonly'}),)
-    
+            try:  
+                seller = models.Seller.objects.get(user=self.user)
+                self.fields['seller'] = forms.CharField(initial=seller.user.username, widget=forms.TextInput(attrs={'readonly': 'readonly'}),)
+            except models.Seller.DoesNotExist:
+                 self.fields['seller'] = forms.CharField(
+                    initial='No tienes perfil de vendedor',
+                    widget=forms.TextInput(attrs={'readonly': 'readonly'}),
+                )
+                
     def clean_amount(self):
         amount = self.cleaned_data.get('amount')
         product = self.cleaned_data.get('product')

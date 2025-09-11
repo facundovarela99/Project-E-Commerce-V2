@@ -10,9 +10,9 @@
     <button type="submit">Search</button>
 </form>
 
-
-
+{% if request.user.is_staff %} 
 <a href="{% url 'product:seller_create' %}"><button>CREATE SELLER</button></a>
+{% endif %}
 
 <table class="tablaPrueba">
     <thead>
