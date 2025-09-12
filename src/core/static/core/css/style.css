@@ -21,6 +21,6 @@
     text-align: center;
 }
 
-.testTable, .testTable thead, .testTable th, .testTable tbody, .testTable tr, .testTable td{
+/* .testTable, .testTable thead, .testTable th, .testTable tbody, .testTable tr, .testTable td{
     border: 2px solid;
-}
+} */

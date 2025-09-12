@@ -8,15 +8,15 @@
 
 <form method="get" action="">
     <input type="text" name="query" placeholder="Search...">
-    <button type="submit">Search</button>
+    <button type="submit" class="btn btn-primary">Search</button>
 </form>
 
 
-{% if user.request.is_staff %}
-<a href="{% url 'product:category_create' %}"><button>CREATE CATEGORY</button></a>
+{% if request.user.is_staff %}
+<a href="{% url 'product:category_create' %}"><button class="btn btn-success">CREATE CATEGORY</button></a>
 {% endif %}
-<table class="testTable">
-    <thead>
+<table class="table table-striped table-hover">
+    <thead class="thead-dark">
         <tr>
             <th>CATEGORY</th>
             <th>ACTIONS</th>
@@ -28,10 +28,10 @@
             <td> {{ category }}</td>
             <td>
                 <!-- NO RECOMENDADO USAR EL PK EN EL FRONT - SOLUCIONAR  -->
-                <a href="{% url 'product:category_detail' category.id %}"><button>DETAIL</button></a>
+                <a href="{% url 'product:category_detail' category.id %}"><button class="btn btn-info">DETAIL</button></a>
                 {% if user.is_staff %}                    
-                <a href="{% url 'product:category_update' category.id %}"><button>EDIT</button></a>
-                <a href="{% url 'product:category_delete' category.id %}"><button>DELETE</button></a>
+                <a href="{% url 'product:category_update' category.id %}"><button class="btn btn-warning">EDIT</button></a>
+                <a href="{% url 'product:category_delete' category.id %}"><button class="btn btn-danger">DELETE</button></a>
                 {% endif %}
             </td>
         </tr>
