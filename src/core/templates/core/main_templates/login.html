@@ -6,13 +6,17 @@
 {% for message in messages %}
 <p>{{ message }}</p>
 {% endfor %}
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit">LOG IN</button>
-</form>
-<p>
-    Don't you have an account?
-    <button type="button"><a href="{% url 'core:register' %}">Sign In</a></button>
-</p>
+<div class="loginFormDiv">
+    <form class="form" action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">LOG IN</button>
+    </form>
+</div>
+<div class="divParagraph">
+    <p class="signInParagraph">
+        Don't you have an account?
+        <button type="button"><a href="{% url 'core:register' %}">Sign In</a></button>
+    </p>
+</div>
 {% endblock content %}

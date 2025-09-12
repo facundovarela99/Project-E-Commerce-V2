@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.loginFormDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    .form{
+        width: 50%;
+        background-color: #008cb0;
+        padding: 5%;
+    }
+}
+
+.signInParagraph{
+    text-align: center;
+}
+
+.testTable, .testTable thead, .testTable th, .testTable tbody, .testTable tr, .testTable td{
+    border: 2px solid;
+}
